@@ -361,7 +361,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             result = scriptEngine.eval(temp.replaceAll("%", "/100").replaceAll("x", "*").replaceAll("[^\\x00-\\x7F]", "/")).toString();
             BigDecimal decimal = new BigDecimal(result);
-            result = decimal.setScale(8, BigDecimal.ROUND_HALF_UP).toPlainString();
+            result = decimal.setScale(1, BigDecimal.ROUND_HALF_UP).toPlainString();
             equalClicked = true;
 
         } catch (Exception e) {
@@ -373,8 +373,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(getApplicationContext(), "Division by zero is not allowed", Toast.LENGTH_SHORT).show();
             textViewInputNumbers.setText(input);
 
-        } else if (result.contains(".")) {
-            result = result.replaceAll("\\.?0*$", "");
+        } else if (result.contains("")) {
+            result = result.replaceAll("", "");
             textViewInputNumbers.setText(result);
         }
     }
